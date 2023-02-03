@@ -16,47 +16,51 @@ const addCategory = async (req, res) => {
   }
 };
 
-
 const getCategory = async (req, res) => {
-    try {
-        const categories = await Category.find();
+  try {
+    const categories = await Category.find();
 
-        res.json({ categories });
-        
-    } catch (error) {
-        console.log(error.message);
-    }
-}
-const addProduct = async (req, res) => { 
-    try {
-         const { name, category, price, description } = req.body;
+    res.json({ categories });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const addProduct = async (req, res) => {
+  try {
+    const { name, category, price, description } = req.body;
 
-         const product = new Product({ name, category, price, description });
-         await product.save();
+    const product = new Product({ name, category, price, description });
+    await product.save();
 
-         res.status(201).json({ product });
-    } catch (error) {
-        console.log(error.message);
-    }
-}
+    res.status(201).json({ product });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-const getProduct = async (req, res) => { 
-    try {
-         const products = await Product.find();
+const getProduct = async (req, res) => {
+  try {
+    const products = await Product.find();
 
-         res.json({ products });
-        
-    } catch (error) {
-        console.log(error.message);
-    }
-}
+    res.json({ products });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
-
-
+const getProductById = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.json({ product });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 module.exports = {
   addCategory,
   getCategory,
   addProduct,
   getProduct,
+  getProductById,
 };
