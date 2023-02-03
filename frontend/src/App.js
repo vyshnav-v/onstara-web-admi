@@ -50,15 +50,15 @@ const App = () => {
         ))}
       </ul>
       <h1>Products</h1>
-      <ul>
+      <ul className='d-flex flex-row p-2'>
         {products
           .filter(
             (product) =>
               !selectedCategory || product.category === selectedCategory.name
           )
           .map((product) => (
-            <div>
-              <Card key={product._id} style={{ width: '18rem' }}>
+            <div >
+              <Card className='' key={product._id} style={{ width: '18rem' }}>
                 <Card.Img variant='top' src='holder.js/100px180' />
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
