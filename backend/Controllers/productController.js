@@ -26,7 +26,20 @@ const getCategories = async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
- }
+}
+const addProduct = async (req, res) => { 
+    try {
+         const { name, category, price, description } = req.body;
+
+         const product = new Product({ name, category, price, description });
+         await product.save();
+
+         res.status(201).json({ product });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 
-module.exports = { addCategory,getCategories };
+
+module.exports = { addCategory, getCategories, addProduct };
