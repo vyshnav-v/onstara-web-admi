@@ -17,7 +17,7 @@ const addCategory = async (req, res) => {
 };
 
 
-const getCategories = async (req, res) => {
+const getCategory = async (req, res) => {
     try {
         const categories = await Category.find();
 
@@ -40,6 +40,23 @@ const addProduct = async (req, res) => {
     }
 }
 
+const getProduct = async (req, res) => { 
+    try {
+         const products = await Product.find();
+
+         res.json({ products });
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 
-module.exports = { addCategory, getCategories, addProduct };
+
+
+module.exports = {
+  addCategory,
+  getCategory,
+  addProduct,
+  getProduct,
+};

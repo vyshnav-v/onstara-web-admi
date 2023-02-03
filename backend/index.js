@@ -17,8 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 //   })
 // })
 app.post("/api/categories", productController.addCategory)
-app.get("/api/categories", productController.getCategories)
+app.get("/api/categories", productController.getCategory)
 app.post("/api/products", productController.addProduct)
+app.get("/api/products", productController.getProduct)
 
 
 
