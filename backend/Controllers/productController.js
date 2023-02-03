@@ -16,4 +16,17 @@ const addCategory = async (req, res) => {
   }
 };
 
-module.exports = { addCategory };
+
+const getCategories = async (req, res) => {
+    try {
+        const categories = await Category.find();
+
+        res.json({ categories });
+        
+    } catch (error) {
+        console.log(error.message);
+    }
+ }
+
+
+module.exports = { addCategory,getCategories };
